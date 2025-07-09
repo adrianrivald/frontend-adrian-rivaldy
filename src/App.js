@@ -100,9 +100,11 @@ export default function SimpleForm() {
   }
 
   const handleChangePrice = (val) => {
-    setPrice(val);
+    const numeric = parseInt(val.replace(/[^\d]/g, ''), 10);
+    const priceVal = isNaN(numeric) ? '' : numeric
+    setPrice(priceVal);    
     // Update price on price change
-    const totalValue = (1 - discount / 100) * val;
+    const totalValue = (1 - discount / 100) * priceVal;
     setTotal(formatRupiah(totalValue)); 
   }
 
@@ -216,7 +218,7 @@ export default function SimpleForm() {
           <Box>
             <Typography mb={1}>Harga :</Typography>
             <TextField
-              value={price}
+              value={price ? formatRupiah(price) : ''}
               disabled={item === null}
               onChange={(e) => handleChangePrice(e.target.value)}
               fullWidth
@@ -230,7 +232,7 @@ export default function SimpleForm() {
           </Box>
 
           <Box>
-            <Button onClick={onReset} variant='contained' fullWidth sx={{py: 2, borderRadius: 4}}>Reset</Button>
+            <Button disabled={item === null} onClick={onReset} variant='contained' fullWidth sx={{py: 2, borderRadius: 4}}>Reset</Button>
           </Box>
         </Stack>
       </Box>
