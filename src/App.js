@@ -134,9 +134,6 @@ export default function SimpleForm() {
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
             Frontend Test - Adrian Rivaldy
           </Typography>
-          <IconButton edge="end" color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
         </Toolbar>
       </AppBar>
 
