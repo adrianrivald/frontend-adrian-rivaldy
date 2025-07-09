@@ -28,7 +28,7 @@ export default function SimpleForm() {
 
   useEffect(() => {
     const fetchCountries = async () => {
-      await fetch('http://202.157.176.100:3001/negaras', {
+      await fetch('/negaras', {
         method: "GET",
         headers: {
           'Content-Type': 'application/json'
@@ -42,7 +42,7 @@ export default function SimpleForm() {
   },[]);
 
   const fetchPorts = async (countryId) => {
-    await fetch(`http://202.157.176.100:3001/pelabuhans?filter={"where" : {"id_negara":${countryId}}}`, {
+    await fetch(`/pelabuhans?filter={"where" : {"id_negara":${countryId}}}`, {
         method: "GET",
         headers: {
           'Content-Type': 'application/json'
@@ -53,7 +53,7 @@ export default function SimpleForm() {
   }
   
   const fetchItems = async (portId) => {
-    await fetch(`http://202.157.176.100:3001/barangs?filter={"where" : {"id_pelabuhan":${portId}}}`, {
+    await fetch(`/barangs?filter={"where" : {"id_pelabuhan":${portId}}}`, {
         method: "GET",
         headers: {
           'Content-Type': 'application/json'
